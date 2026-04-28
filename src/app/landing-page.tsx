@@ -11,6 +11,12 @@ export default function LandingPage() {
     const mobileMenu = document.getElementById("mobileMenu");
     const contactForm = document.getElementById("contactForm") as HTMLFormElement | null;
     const formSuccess = document.getElementById("formSuccess");
+    const formError = document.getElementById("formError");
+    const submitButton = contactForm?.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const submitLabel = submitButton?.textContent ?? "Изпрати запитване →";
+    const defaultFormError =
+      formError?.textContent?.trim() ??
+      "⚠️ Не успяхме да изпратим запитването. Моля, обадете се на 0896 153 160 или опитайте отново след малко.";
 
     const closeMobile = () => {
       mobileMenu?.classList.remove("open");
@@ -79,23 +85,84 @@ export default function LandingPage() {
 
     let successTimeout: number | undefined;
 
-    const onFormSubmit = (event: Event) => {
-      event.preventDefault();
-      contactForm?.reset();
+    const hideFeedback = () => {
+      if (formSuccess instanceof HTMLElement) {
+        formSuccess.style.display = "none";
+      }
 
-      if (!formSuccess) {
+      if (formError instanceof HTMLElement) {
+        formError.style.display = "none";
+      }
+    };
+
+    const onFormSubmit = async (event: Event) => {
+      event.preventDefault();
+
+      if (!contactForm || !submitButton || !(formSuccess instanceof HTMLElement)) {
         return;
       }
 
-      formSuccess.style.display = "block";
+      hideFeedback();
+      submitButton.disabled = true;
+      submitButton.textContent = "Изпращане...";
 
-      if (successTimeout) {
-        window.clearTimeout(successTimeout);
+      try {
+        const formData = new FormData(contactForm);
+        const payload = Object.fromEntries(formData.entries());
+        const response = await fetch(contactForm.action, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        const result = await response.json().catch(() => null);
+        const requestFailed =
+          !response.ok || result?.success === false || result?.success === "false";
+
+        if (requestFailed) {
+          const serviceMessage =
+            typeof result?.message === "string"
+              ? result.message
+              : typeof result?.error === "string"
+                ? result.error
+                : "";
+
+          if (formError instanceof HTMLElement) {
+            formError.textContent = /activate|confirm/i.test(serviceMessage)
+              ? "⚠️ FormSubmit изисква еднократно потвърждение на melvin@nula.bg. Проверете входящата поща, активирайте формата и опитайте отново."
+              : serviceMessage
+                ? `⚠️ ${serviceMessage}`
+                : defaultFormError;
+            formError.style.display = "block";
+          }
+
+          return;
+        }
+
+        contactForm.reset();
+        formSuccess.style.display = "block";
+
+        if (successTimeout) {
+          window.clearTimeout(successTimeout);
+        }
+
+        successTimeout = window.setTimeout(() => {
+          formSuccess.style.display = "none";
+        }, 8000);
+      } catch (error) {
+        if (formError instanceof HTMLElement) {
+          formError.textContent = defaultFormError;
+          formError.style.display = "block";
+        }
+
+        console.error("Failed to submit contact form:", error);
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = submitLabel;
       }
-
-      successTimeout = window.setTimeout(() => {
-        formSuccess.style.display = "none";
-      }, 8000);
     };
 
     hamburger?.addEventListener("click", onHamburgerClick);
