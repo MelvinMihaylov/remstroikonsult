@@ -1,12 +1,16 @@
-import { baseURL } from "@/resources";
+import { getSiteUrl } from "./site-config";
 
 export default function robots() {
+  const siteUrl = getSiteUrl();
+
   return {
     rules: [
       {
         userAgent: "*",
+        allow: "/",
       },
     ],
-    sitemap: `${baseURL}/sitemap.xml`,
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }
