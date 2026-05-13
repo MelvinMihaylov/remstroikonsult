@@ -1,6 +1,7 @@
-import type { CSSProperties, FormEventHandler, RefObject } from "react";
+import type { CSSProperties, FormEventHandler, ReactNode, RefObject } from "react";
 
 import { siteConfig } from "../../app/site-config";
+import { pricingRoute } from "../pricing/data";
 import {
   aboutPoints,
   contactFormAction,
@@ -74,6 +75,11 @@ type SiteHeaderProps = {
   mobileMenuRef: RefObject<HTMLElement | null>;
   onToggleMobileMenu: () => void;
   onCloseMobileMenu: () => void;
+  brandHref?: string;
+  ctaHref?: string;
+  links?: typeof navLinks;
+  secondaryContent?: ReactNode;
+  isSecondaryContentVisible?: boolean;
 };
 
 type ContactSectionProps = {
@@ -85,6 +91,24 @@ type ContactSectionProps = {
 
 function joinClassNames(...classNames: Array<string | false | null | undefined>) {
   return classNames.filter(Boolean).join(" ");
+}
+
+function resolveSectionHref(href: string, prefix?: string) {
+  if (!prefix || !href.startsWith("#")) {
+    return href;
+  }
+
+  return `${prefix}${href}`;
+}
+
+function CurrentYear() {
+  const year = new Date().getFullYear();
+
+  return (
+    <time dateTime={String(year)} suppressHydrationWarning>
+      {year}
+    </time>
+  );
 }
 
 export function FloatingPhoneButton() {
@@ -102,12 +126,26 @@ export function SiteHeader({
   mobileMenuRef,
   onToggleMobileMenu,
   onCloseMobileMenu,
+  brandHref = "#hero",
+  ctaHref = "#contact",
+  links = navLinks,
+  secondaryContent,
+  isSecondaryContentVisible = false,
 }: SiteHeaderProps) {
   return (
     <header>
-      <nav ref={navRef} className={joinClassNames("nav", isNavScrolled && "scrolled")} id="mainNav">
+      <nav
+        ref={navRef}
+        className={joinClassNames(
+          "nav",
+          isNavScrolled && "scrolled",
+          Boolean(secondaryContent) && "nav-with-secondary",
+          isSecondaryContentVisible && "nav-secondary-open",
+        )}
+        id="mainNav"
+      >
         <div className="nav-inner">
-          <a href="#hero" className="nav-brand">
+          <a href={brandHref} className="nav-brand">
             <div className="nav-brand-mark">
               <img
                 src="/images/remstroi/remstroi-logo.png"
@@ -121,22 +159,30 @@ export function SiteHeader({
             </div>
           </a>
 
-          <ul className="nav-links">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a href={link.href}>{link.label}</a>
-              </li>
-            ))}
-          </ul>
+          <div className="nav-center">
+            <ul className="nav-links">
+              {links.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href}>{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <div className="nav-cta">
             <a href={siteConfig.phoneHref} className="nav-phone-link">
               <span>📞</span> {navPhoneDisplay}
             </a>
-            <a href="#contact" className="btn btn-primary" style={navButtonStyle}>
+            <a href={ctaHref} className="btn btn-primary" style={navButtonStyle}>
               Безплатна оферта
             </a>
           </div>
+
+          {secondaryContent ? (
+            <div className="nav-secondary" aria-hidden={!isSecondaryContentVisible}>
+              <div className="nav-secondary-inner">{secondaryContent}</div>
+            </div>
+          ) : null}
 
           <button
             type="button"
@@ -159,7 +205,7 @@ export function SiteHeader({
         className={joinClassNames("mobile-menu", isMobileMenuOpen && "open")}
         id="mobileMenu"
       >
-        {navLinks.map((link) => (
+        {links.map((link) => (
           <a key={link.href} href={link.href} onClick={onCloseMobileMenu}>
             {link.label}
           </a>
@@ -399,6 +445,11 @@ export function PricesSection() {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
+              <div className="price-card-footer">
+                <a href={`${pricingRoute}#${card.detailsSlug}`} className="price-card-link">
+                  Виж ценораспис
+                </a>
+              </div>
             </div>
           ))}
         </div>
@@ -695,7 +746,7 @@ export function ContactSection({
   );
 }
 
-export function SiteFooter() {
+export function SiteFooter({ sectionLinkPrefix = "" }: { sectionLinkPrefix?: string }) {
   return (
     <footer>
       <div className="container">
@@ -712,7 +763,7 @@ export function SiteFooter() {
             <ul className="footer-links-list">
               {services.map((service) => (
                 <li key={service.name}>
-                  <a href="#services">{service.name}</a>
+                  <a href={resolveSectionHref("#services", sectionLinkPrefix)}>{service.name}</a>
                 </li>
               ))}
             </ul>
@@ -730,16 +781,20 @@ export function SiteFooter() {
                 <a href={`mailto:${siteConfig.email}`}>✉️ {siteConfig.email}</a>
               </li>
               <li>
-                <a href="#contact">📍 Варна и региона</a>
+                <a href={resolveSectionHref("#contact", sectionLinkPrefix)}>📍 Варна и региона</a>
               </li>
               <li>
-                <a href="#contact">🕐 Пон–Пет 08:00–18:00</a>
+                <a href={resolveSectionHref("#contact", sectionLinkPrefix)}>
+                  🕐 Пон–Пет 08:00–18:00
+                </a>
               </li>
             </ul>
           </div>
         </div>
         <div className="footer-bottom">
-          <div className="footer-copy">© 2025 {siteConfig.name} · Всички права запазени</div>
+          <div className="footer-copy">
+            © <CurrentYear /> {siteConfig.name} · Всички права запазени
+          </div>
           <a href={siteConfig.phoneHref} className="footer-phone">
             📞 {siteConfig.phoneDisplay}
           </a>

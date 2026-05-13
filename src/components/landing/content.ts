@@ -125,11 +125,29 @@ export const services = [
 
 export const priceCards = [
   {
+    label: "⭐ Топ услуга",
+    name: "Баня до ключ",
+    from: "4 000",
+    to: "– 9 000+",
+    unit: "евро · без материали",
+    detailsSlug: "bathroom-renovation",
+    includes: [
+      "Демонтаж и извозване",
+      "ВиК преработка",
+      "Замазка и плочки",
+      "Монтаж цяла санитария",
+      "Почистване и предаване",
+      "2 години гаранция",
+    ],
+    featured: true,
+  },
+  {
     label: "Плочки",
     name: "Лепене на плочки",
     from: "80",
     to: "– 160",
     unit: "евро / м² · само труд",
+    detailsSlug: "finishing-works",
     includes: [
       "Стандартен монтаж до 60×60 см",
       "Подови и стенни плочки",
@@ -143,6 +161,7 @@ export const priceCards = [
     from: "150",
     to: "– 400",
     unit: "евро · за обект",
+    detailsSlug: "bathroom-renovation",
     includes: [
       "Сложни геометрични разрези",
       "Вграден подов сифон",
@@ -156,6 +175,7 @@ export const priceCards = [
     from: "55",
     to: "– 90",
     unit: "евро / м² · само труд",
+    detailsSlug: "floor-screeds",
     includes: [
       "Циментова стяжка 4–8 см",
       "Самонивелираща замазка",
@@ -169,6 +189,7 @@ export const priceCards = [
     from: "60",
     to: "– 100",
     unit: "евро / м² · само труд",
+    detailsSlug: "floor-screeds",
     includes: [
       "Леки конструкции",
       "Под наклон (душ зона)",
@@ -182,6 +203,7 @@ export const priceCards = [
     from: "45.00",
     to: "– 65.00",
     unit: "евро / точка · труд",
+    detailsSlug: "plumbing",
     includes: [
       "Студена / топла вода",
       "Канализационна точка",
@@ -195,23 +217,8 @@ export const priceCards = [
     from: "80",
     to: "– 200",
     unit: "евро / брой · труд",
+    detailsSlug: "plumbing",
     includes: ["WC, умивалник, биде", "Вана, душ кабина", "Смесители", "Гаранция за монтажа"],
-  },
-  {
-    label: "⭐ Топ услуга",
-    name: "Баня до ключ",
-    from: "4 000",
-    to: "– 9 000+",
-    unit: "евро · без материали",
-    includes: [
-      "Демонтаж и извозване",
-      "ВиК преработка",
-      "Замазка и плочки",
-      "Монтаж цяла санитария",
-      "Почистване и предаване",
-      "2 години гаранция",
-    ],
-    featured: true,
   },
 ];
 

@@ -10,5 +10,11 @@ export default function sitemap() {
       changeFrequency: "monthly" as const,
       priority: 1,
     },
+    {
+      url: `${siteUrl}/prices`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
   ];
 }
