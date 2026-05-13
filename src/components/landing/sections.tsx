@@ -6,7 +6,6 @@ import {
   contactFormAction,
   contactFormSubject,
   footerSeoText,
-  galleryItems,
   heroCardItems,
   heroStats,
   navLinks,
@@ -47,10 +46,6 @@ const heroCardCtaStyle: CSSProperties = {
   fontSize: "0.95rem",
   transition: "background 0.25s",
   textDecoration: "none",
-};
-
-const galleryLeadStyle: CSSProperties = {
-  marginTop: "0.7rem",
 };
 
 const footerSeoStyle: CSSProperties = {
@@ -420,40 +415,6 @@ export function PricesSection() {
             📞 {siteConfig.phoneDisplay}
           </a>
         </div>
-      </div>
-    </section>
-  );
-}
-
-export function GallerySection() {
-  return (
-    <section className="section gallery-section" id="gallery">
-      <div className="container">
-        <div className="gallery-header reveal">
-          <div className="section-eyebrow">Галерия</div>
-          <h2 className="headline">
-            Нашите проекти
-            <br />
-            говорят сами
-          </h2>
-          <p className="lead" style={galleryLeadStyle}>
-            Реализирани обекти в Варна и региона. Всяко фото е от реален клиент.
-          </p>
-        </div>
-        <div className="gallery-grid reveal">
-          {galleryItems.map((item) => (
-            <div key={item.gridClass} className={`gal-item ${item.gridClass}`}>
-              <img src={item.image} alt={item.alt} />
-              <div className="gal-overlay">
-                <span className="gal-label">{item.label}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-        <p className="gallery-cta reveal">
-          Имате конкретен проект? <strong>Обадете се и обсъдете идеите си с нас</strong> –{" "}
-          {siteConfig.phoneDisplay}
-        </p>
       </div>
     </section>
   );

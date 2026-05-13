@@ -215,45 +215,6 @@ export const priceCards = [
   },
 ];
 
-export const galleryItems = [
-  {
-    gridClass: "g1",
-    image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=700&q=85",
-    alt: "Монтаж плочки баня Варна – Ремстрой Консулт",
-    label: "Баня до ключ · к-с Чайка",
-  },
-  {
-    gridClass: "g2",
-    image: "https://images.unsplash.com/photo-1584622781564-1d987f7333c1?w=700&q=85",
-    alt: "ВиК монтаж Варна",
-    label: "ВиК инсталация · нов обект",
-  },
-  {
-    gridClass: "g3",
-    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=700&q=85",
-    alt: "Плочки баня Варна",
-    label: "Реконструкция баня · Бриз",
-  },
-  {
-    gridClass: "g4",
-    image: "https://images.unsplash.com/photo-1586105449897-20b5efeb3233?w=700&q=85",
-    alt: "Гранитогрес хол Варна",
-    label: "Гранитогрес · хол",
-  },
-  {
-    gridClass: "g5",
-    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=85",
-    alt: "Замазка под Варна",
-    label: "Самонивелираща замазка",
-  },
-  {
-    gridClass: "g6",
-    image: "https://images.unsplash.com/photo-1599619351208-3e6c839d6828?w=700&q=85",
-    alt: "Микроцимент баня Варна",
-    label: "Микроцимент · Владислав",
-  },
-];
-
 export const reviews = [
   {
     text: '„Направиха ни баня до ключ за по-малко от две седмици. Всичко беше изпипано – от замазката до последния силикон. Работиха чисто, без забавяне и без скрити разходи. Определено ги препоръчвам."',

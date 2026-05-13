@@ -7,12 +7,12 @@ import {
   contactDefaultError,
   contactSuccessMessage,
 } from "../components/landing/content";
+import { GallerySection } from "../components/landing/gallery-section";
 import {
   AboutSection,
   ContactSection,
   CtaSection,
   FloatingPhoneButton,
-  GallerySection,
   HeroSection,
   PricesSection,
   ReviewsSection,
