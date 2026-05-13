@@ -10,7 +10,6 @@ import {
   heroStats,
   navLinks,
   priceCards,
-  ratingBars,
   reviews,
   serviceOptions,
   services,
@@ -447,7 +446,6 @@ export function ReviewsSection() {
               )}
             >
               <div className="review-quote-mark">"</div>
-              <div className="review-stars">★★★★★</div>
               <p className="review-text">{review.text}</p>
               <div className="review-meta">
                 <div className="review-avatar">{review.initials}</div>
@@ -458,25 +456,6 @@ export function ReviewsSection() {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="rating-summary reveal">
-          <div className="rating-big">
-            <div className="rating-num">5.0</div>
-            <div className="rating-stars">★★★★★</div>
-            <div className="rating-count">от 47 отзива</div>
-          </div>
-          <div className="rating-bars">
-            {ratingBars.map((bar) => (
-              <div key={bar.label} className="rating-bar-row">
-                <span className="rating-bar-label">{bar.label}</span>
-                <div className="rating-bar-track">
-                  <div className="rating-bar-fill" style={{ width: bar.width }} />
-                </div>
-                <span className="rating-bar-count">{bar.count}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

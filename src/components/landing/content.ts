@@ -247,13 +247,6 @@ export const reviews = [
   },
 ];
 
-export const ratingBars = [
-  { label: "5 ★", width: "92%", count: "43" },
-  { label: "4 ★", width: "8%", count: "4" },
-  { label: "3 ★", width: "0%", count: "0" },
-  { label: "2 ★", width: "0%", count: "0" },
-];
-
 export const serviceOptions = [
   "Лепене на плочки",
   "ВиК услуги",
