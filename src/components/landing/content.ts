@@ -8,7 +8,7 @@ export const navLinks = [
 
 export const heroCardItems = [
   { icon: "🪨", name: "Лепене на плочки", price: "от 50 евро/м²" },
-  { icon: "🔧", name: "ВиК услуги", price: "от 45.00 евро/точка" },
+  { icon: "🔧", name: "ВиК услуги", price: "от 45 евро/точка" },
   { icon: "🏗️", name: "Замазки и подове", price: "от 55 евро/м²" },
   { icon: "🚿", name: "Баня до ключ", price: "от 4 000 евро" },
 ];
@@ -200,8 +200,8 @@ export const priceCards = [
   {
     label: "ВиК",
     name: "Комплексна ВиК точка (Вода + Канал)",
-    from: "45.00",
-    to: "– 65.00",
+    from: "45",
+    to: "– 65",
     unit: "евро / точка · труд",
     detailsSlug: "plumbing",
     includes: [

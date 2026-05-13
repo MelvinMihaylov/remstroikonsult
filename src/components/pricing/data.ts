@@ -285,7 +285,7 @@ export const pricingCategories: PricingCategory[] = [
           {
             title: "Комплексна ВиК точка (вода + канал)",
             unit: "бр.",
-            labor: "45.00 – 65.00 €",
+            labor: "45 – 65 €",
             materials: "30.00 – 50.00 €",
             total: "75.00 – 115.00 €",
           },
