@@ -969,6 +969,7 @@ button {
   padding: 0;
   appearance: none;
   text-align: left;
+  container-type: inline-size;
 }
 .gal-item img {
   width: 100%;
@@ -1006,6 +1007,9 @@ button {
   justify-content: space-between;
   gap: 1rem;
 }
+.gal-overlay-content > :first-child {
+  min-width: 0;
+}
 .gal-count {
   font-size: 0.72rem;
   font-weight: 600;
@@ -1040,6 +1044,17 @@ button {
   font-weight: 600;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+}
+@container (max-width: 280px) {
+  .gal-overlay-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+
+  .gal-open-label {
+    margin-top: 0.05rem;
+  }
 }
 .gal-placeholder {
   width: 100%;
