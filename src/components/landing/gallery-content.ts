@@ -12,8 +12,8 @@ export type GalleryCategory = {
 export const galleryCategories: GalleryCategory[] = [
   {
     slug: "boyadisvane-na-staya",
-    title: "Боядисване на стая",
-    previewTitle: "Боядисване на стая",
+    title: "Боядисване",
+    previewTitle: "Боядисване",
     previewDescription: "Освежаване и финишни детайли",
     imageCount: 12,
     gridClass: "g1",
