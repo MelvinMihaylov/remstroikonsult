@@ -20,8 +20,8 @@ const galleryLeadStyle = {
 };
 
 const galleryImages: GalleryImage[] = galleryCategories.flatMap((category) =>
-  Array.from({ length: category.imageCount }, (_, index) => ({
-    src: buildGalleryImagePath(category.slug, index + 1),
+  getCategoryImageOrder(category).map((imageNumber, index) => ({
+    src: buildGalleryImagePath(category.slug, imageNumber),
     alt: `${category.title} – снимка ${index + 1} от ${category.imageCount}`,
     categorySlug: category.slug,
     categoryTitle: category.title,
@@ -35,11 +35,21 @@ const galleryPreviewCategories = galleryCategories
   .filter((category) => category.showOnGrid)
   .map((category) => ({
     ...category,
-    coverSrc: buildGalleryImagePath(category.slug, category.coverIndex ?? 1),
+    coverSrc: buildGalleryImagePath(category.slug, getCategoryImageOrder(category)[0] ?? 1),
   }));
 
 function buildGalleryImagePath(slug: string, index: number) {
   return `/images/remstroi/gallery/${slug}/${String(index).padStart(2, "0")}.jpg`;
+}
+
+function getCategoryImageOrder(category: (typeof galleryCategories)[number]) {
+  const startIndex = category.coverIndex ?? 1;
+
+  return Array.from({ length: category.imageCount }, (_, index) => {
+    const rawIndex = startIndex - 1 + index;
+
+    return (rawIndex % category.imageCount) + 1;
+  });
 }
 
 function joinClassNames(...classNames: Array<string | false | null | undefined>) {

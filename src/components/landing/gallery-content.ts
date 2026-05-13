@@ -18,6 +18,7 @@ export const galleryCategories: GalleryCategory[] = [
     imageCount: 12,
     gridClass: "g1",
     showOnGrid: true,
+    coverIndex: 2,
   },
   {
     slug: "vik",
