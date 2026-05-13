@@ -14,8 +14,8 @@ export const heroCardItems = [
 ];
 
 export const heroStats = [
-  { value: "15", suffix: "+", label: "Години опит" },
-  { value: "600", suffix: "+", label: "Завършени обекта" },
+  { value: "5", suffix: "+", label: "Години опит" },
+  { value: "100", suffix: "+", label: "Завършени обекта" },
   { value: "2", suffix: " год.", label: "Гаранция за труда" },
   { value: "0 ", suffix: "евро", label: "Безплатен оглед" },
 ];
@@ -23,7 +23,7 @@ export const heroStats = [
 export const trustItems = [
   {
     icon: "🏆",
-    title: "15+ Години опит",
+    title: "5+ Години опит",
     description: "Опитен екип от специалисти",
   },
   {

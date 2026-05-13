@@ -327,7 +327,7 @@ export function AboutSection() {
               className="about-main-img"
             />
             <div className="about-badge-card">
-              <div className="about-badge-num">600+</div>
+              <div className="about-badge-num">100+</div>
               <div className="about-badge-lbl">
                 завършени
                 <br />
