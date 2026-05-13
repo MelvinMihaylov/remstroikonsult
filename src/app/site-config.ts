@@ -1,4 +1,4 @@
-const defaultSiteUrl = "https://remstroikonsult.bg";
+const defaultSiteUrl = "https://remstroikonsult.com";
 
 export const siteConfig = {
   name: "Ремстрой Консулт",
