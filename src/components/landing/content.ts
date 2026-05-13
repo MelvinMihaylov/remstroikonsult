@@ -265,14 +265,14 @@ export const serviceOptions = [
   "Друго",
 ];
 
-export const contactFormAction = "https://formsubmit.co/ajax/melvin@nula.bg";
+export const contactFormAction = "https://formsubmit.co/ajax/peturvulkov1963@gmail.com";
 export const contactFormSubject = "Ново запитване от сайта на Ремстрой Консулт";
 export const contactSuccessMessage =
   "✅ Получихме вашето запитване! Ще се свържем с вас до 2 часа в работното ни време.";
 export const contactDefaultError =
   "⚠️ Не успяхме да изпратим запитването. Моля, обадете се на 0896 153 160 или опитайте отново след малко.";
 export const contactActivationError =
-  "⚠️ FormSubmit изисква еднократно потвърждение на melvin@nula.bg. Проверете входящата поща, активирайте формата и опитайте отново.";
+  "⚠️ FormSubmit изисква еднократно потвърждение на peturvulkov1963@gmail.com. Проверете входящата поща, активирайте формата и опитайте отново.";
 
 export const footerSeoText =
   "Строителна фирма Варна · Лепене плочки Варна · ВиК Варна · Замазки Варна · Гипсокартон Варна · Баня до ключ Варна · Микроцимент Варна · Ремонт апартамент Варна · Ремстрой Консулт Варна";
