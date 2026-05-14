@@ -1,4 +1,9 @@
 const defaultSiteUrl = "https://remstroikonsult.com";
+export const socialPreview = {
+  path: "/images/remstroi/remstroi-about-main.png",
+  width: 1536,
+  height: 1024,
+};
 
 export const siteConfig = {
   name: "Ремстрой Консулт",

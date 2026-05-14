@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 
-import { getSiteUrl, siteConfig } from "./site-config";
+import { getSiteUrl, siteConfig, socialPreview } from "./site-config";
 
 const siteUrl = getSiteUrl();
 const logoPath = "/images/remstroi/remstroi-logo.png";
-const ogImagePath = "/images/og/home.jpg";
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -71,9 +70,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: ogImagePath,
-        width: 1920,
-        height: 1200,
+        url: socialPreview.path,
+        width: socialPreview.width,
+        height: socialPreview.height,
         alt: siteConfig.title,
       },
     ],
@@ -82,7 +81,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [ogImagePath],
+    images: [socialPreview.path],
   },
 };
 
