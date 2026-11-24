@@ -1,0 +1,98 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(15, 39, 68, 0.72);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  overflow-y: auto;
+}
+
+/* Overrides the user-agent styles a bare open <dialog> carries. */
+.dialog {
+  display: block;
+  position: static;
+  width: 100%;
+  max-width: 480px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+}
+
+.accent {
+  height: 4px;
+  background: linear-gradient(90deg, var(--copper), var(--copper-dark));
+}
+
+.body {
+  padding: 32px 28px 28px;
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--copper-dark);
+}
+
+.title {
+  margin-top: 10px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--navy);
+}
+
+.lead {
+  margin-top: 12px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--gray-600);
+}
+
+.party {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--gray-200);
+}
+
+.partyLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+}
+
+.partyName {
+  margin-top: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.partyLine {
+  margin-top: 3px;
+  font-size: 0.875rem;
+  color: var(--gray-600);
+}
+
+@media (max-width: 480px) {
+  .body {
+    padding: 26px 20px 24px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}

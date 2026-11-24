@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 
 import "./globals.css";
 
+import { PAST_DUE_COOKIE } from "../components/billing/cookie";
+import { PastDueNotice } from "../components/billing/past-due-notice";
 import { getSiteUrl, siteConfig, socialPreview } from "./site-config";
 
 const siteUrl = getSiteUrl();
@@ -85,11 +88,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isPastDue = (await cookies()).has(PAST_DUE_COOKIE);
+
   return (
     <html lang="bg">
       <head>
@@ -105,7 +110,10 @@ export default function RootLayout({
         <meta name="msapplication-config" content="/browserconfig.xml" />
         <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
       </head>
-      <body>{children}</body>
+      <body className={isPastDue ? "past-due-lock" : undefined}>
+        {children}
+        {isPastDue && <PastDueNotice />}
+      </body>
     </html>
   );
 }

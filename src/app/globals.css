@@ -2090,3 +2090,12 @@ footer {
     align-items: flex-start;
   }
 }
+
+/* ═══════════════════════════════════════════
+   PAST-DUE NOTICE
+═══════════════════════════════════════════ */
+/* Set by the root layout while the past-due notice is up, so the page
+   behind it cannot be scrolled. */
+.past-due-lock {
+  overflow: hidden;
+}
