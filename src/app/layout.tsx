@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { cookies } from "next/headers";
 
 import "./globals.css";
 
-import { PAST_DUE_COOKIE } from "../components/billing/cookie";
 import { PastDueNotice } from "../components/billing/past-due-notice";
 import { getSiteUrl, siteConfig, socialPreview } from "./site-config";
 
@@ -64,6 +62,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  /** Keeps the suspended site out of search results; drop it when restoring. */
+  robots: {
+    index: false,
+    follow: false,
+  },
   openGraph: {
     title: siteConfig.title,
     description: siteConfig.description,
@@ -88,13 +91,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const isPastDue = (await cookies()).has(PAST_DUE_COOKIE);
-
   return (
     <html lang="bg">
       <head>
@@ -110,9 +111,9 @@ export default async function RootLayout({
         <meta name="msapplication-config" content="/browserconfig.xml" />
         <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
       </head>
-      <body className={isPastDue ? "past-due-lock" : undefined}>
+      <body className="past-due-lock">
         {children}
-        {isPastDue && <PastDueNotice />}
+        <PastDueNotice />
       </body>
     </html>
   );
